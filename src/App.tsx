@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "@/lib/cart-context";
+import ChatBot from "@/components/ChatBot";
 import Index from "./pages/Index";
 import Menu from "./pages/Menu";
 import Booking from "./pages/Booking";
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <ChatBot />
         </BrowserRouter>
       </CartProvider>
     </TooltipProvider>
