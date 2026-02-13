@@ -49,7 +49,7 @@ const findAnswer = (query: string): string => {
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { id: "welcome", role: "bot", content: "Assalam-o-Alaikum! Welcome to SEVVA Restaurant 🍽️ How can I help you today? Ask me about our menu, timings, booking, or anything else!" },
+    { id: "welcome", role: "bot", content: "Welcome to SEVVA! 🍽️ Ask me about our menu, timings, booking, or anything else!" },
   ]);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -70,7 +70,6 @@ const ChatBot = () => {
 
   return (
     <>
-      {/* Floating Button */}
       <AnimatePresence>
         {!isOpen && (
           <motion.button
@@ -78,54 +77,46 @@ const ChatBot = () => {
             animate={{ scale: 1 }}
             exit={{ scale: 0 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-20 right-4 z-50 w-14 h-14 rounded-full bg-gold-gradient shadow-gold-lg flex items-center justify-center text-primary-foreground transition-transform hover:scale-110 active:scale-95"
+            className="fixed bottom-[72px] right-4 z-40 w-12 h-12 rounded-full bg-gold-gradient shadow-gold flex items-center justify-center text-primary-foreground active:scale-95"
             aria-label="Open chat"
           >
-            <Bot size={24} />
+            <Bot size={20} />
           </motion.button>
         )}
       </AnimatePresence>
 
-      {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 100, scale: 0.8 }}
+            initial={{ opacity: 0, y: 60, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 100, scale: 0.8 }}
+            exit={{ opacity: 0, y: 60, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed bottom-20 right-3 left-3 z-50 max-w-sm mx-auto"
+            className="fixed bottom-[72px] right-3 z-50 w-[calc(100%-24px)] max-w-sm"
           >
-            <div className="glass-card rounded-2xl overflow-hidden border border-primary/20 shadow-gold-lg flex flex-col" style={{ height: "min(70vh, 500px)" }}>
-              {/* Header */}
-              <div className="bg-gold-gradient p-4 flex items-center justify-between shrink-0">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-primary-foreground/20 flex items-center justify-center">
-                    <Bot size={18} className="text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-display font-bold text-primary-foreground text-sm">SEVVA Assistant</h3>
-                    <p className="text-[10px] text-primary-foreground/70">Always here to help</p>
-                  </div>
+            <div className="glass-card rounded-2xl overflow-hidden border border-primary/20 shadow-gold-lg flex flex-col" style={{ height: "min(60vh, 420px)" }}>
+              <div className="bg-gold-gradient px-3 py-2.5 flex items-center justify-between shrink-0">
+                <div className="flex items-center gap-2">
+                  <Bot size={16} className="text-primary-foreground" />
+                  <span className="font-display font-bold text-primary-foreground text-xs">SEVVA Assistant</span>
                 </div>
                 <button onClick={() => setIsOpen(false)} className="text-primary-foreground/80 hover:text-primary-foreground">
-                  <X size={20} />
+                  <X size={18} />
                 </button>
               </div>
 
-              {/* Messages */}
-              <div className="flex-1 overflow-y-auto p-3 space-y-3">
+              <div className="flex-1 overflow-y-auto p-2.5 space-y-2">
                 {messages.map((msg) => (
                   <motion.div
                     key={msg.id}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`flex gap-2 ${msg.role === "user" ? "flex-row-reverse" : ""}`}
+                    className={`flex gap-1.5 ${msg.role === "user" ? "flex-row-reverse" : ""}`}
                   >
-                    <div className={`w-7 h-7 rounded-full shrink-0 flex items-center justify-center ${msg.role === "bot" ? "bg-primary/20" : "bg-secondary"}`}>
-                      {msg.role === "bot" ? <Bot size={14} className="text-primary" /> : <User size={14} className="text-foreground" />}
+                    <div className={`w-6 h-6 rounded-full shrink-0 flex items-center justify-center ${msg.role === "bot" ? "bg-primary/20" : "bg-secondary"}`}>
+                      {msg.role === "bot" ? <Bot size={12} className="text-primary" /> : <User size={12} className="text-foreground" />}
                     </div>
-                    <div className={`max-w-[80%] rounded-2xl px-3 py-2 text-xs leading-relaxed ${
+                    <div className={`max-w-[80%] rounded-xl px-2.5 py-1.5 text-[11px] leading-relaxed ${
                       msg.role === "bot"
                         ? "bg-secondary text-secondary-foreground rounded-tl-sm"
                         : "bg-primary text-primary-foreground rounded-tr-sm"
@@ -137,32 +128,31 @@ const ChatBot = () => {
                 <div ref={messagesEndRef} />
               </div>
 
-              {/* Input */}
-              <div className="p-3 border-t border-border/30 shrink-0">
-                <div className="flex gap-2">
+              <div className="p-2 border-t border-border/30 shrink-0">
+                <div className="flex gap-1.5">
                   <input
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                    placeholder="Ask about menu, hours, booking..."
-                    className="flex-1 bg-secondary rounded-xl px-3 py-2.5 text-xs text-foreground placeholder:text-muted-foreground outline-none focus:ring-1 focus:ring-primary"
+                    placeholder="Ask anything..."
+                    className="flex-1 bg-secondary rounded-lg px-2.5 py-2 text-[11px] text-foreground placeholder:text-muted-foreground outline-none focus:ring-1 focus:ring-primary"
                     maxLength={500}
                   />
                   <button
                     onClick={handleSend}
                     disabled={!input.trim()}
-                    className="w-10 h-10 rounded-xl bg-gold-gradient flex items-center justify-center text-primary-foreground disabled:opacity-50 transition-transform active:scale-90"
+                    className="w-8 h-8 rounded-lg bg-gold-gradient flex items-center justify-center text-primary-foreground disabled:opacity-50 active:scale-90"
                   >
-                    <Send size={16} />
+                    <Send size={14} />
                   </button>
                 </div>
-                <div className="flex gap-1.5 mt-2 overflow-x-auto scrollbar-hide">
-                  {["Menu", "Hours", "Book Table", "Location", "Specials"].map((q) => (
+                <div className="flex gap-1 mt-1.5 overflow-x-auto scrollbar-hide">
+                  {["Menu", "Hours", "Book", "Location"].map((q) => (
                     <button
                       key={q}
                       onClick={() => { setInput(q); }}
-                      className="shrink-0 px-2.5 py-1 rounded-full bg-muted text-[10px] font-medium text-muted-foreground hover:bg-primary/20 hover:text-primary transition-colors"
+                      className="shrink-0 px-2 py-0.5 rounded-full bg-muted text-[9px] font-medium text-muted-foreground hover:bg-primary/20 hover:text-primary transition-colors"
                     >
                       {q}
                     </button>

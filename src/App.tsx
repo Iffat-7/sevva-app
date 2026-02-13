@@ -9,6 +9,8 @@ import Index from "./pages/Index";
 import Menu from "./pages/Menu";
 import Booking from "./pages/Booking";
 import Cart from "./pages/Cart";
+import Auth from "./pages/Auth";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +27,8 @@ const App = () => (
             <Route path="/menu" element={<Menu />} />
             <Route path="/booking" element={<Booking />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <ChatBot />

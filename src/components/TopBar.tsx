@@ -1,4 +1,4 @@
-import { Phone, MessageCircle } from "lucide-react";
+import { Phone, MessageCircle, UserCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const TopBar = () => {
@@ -8,10 +8,17 @@ const TopBar = () => {
         <Link to="/" className="flex items-center gap-2">
           <span className="text-xl font-display font-bold text-gold-gradient tracking-wide">SEVVA</span>
         </Link>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
+          <Link
+            to="/auth"
+            className="w-9 h-9 rounded-full flex items-center justify-center bg-secondary text-muted-foreground hover:text-primary transition-colors"
+            aria-label="Account"
+          >
+            <UserCircle size={18} />
+          </Link>
           <a
             href="tel:+923151773177"
-            className="w-9 h-9 rounded-full flex items-center justify-center bg-secondary text-primary transition-colors hover:bg-secondary/80"
+            className="w-9 h-9 rounded-full flex items-center justify-center bg-secondary text-muted-foreground hover:text-primary transition-colors"
             aria-label="Call"
           >
             <Phone size={16} />

@@ -52,6 +52,9 @@ const InfoFooter = () => {
           <a href="https://instagram.com/sevvarestaurant" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-primary">Instagram</a>
           <a href="https://sevva.pk" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-primary">Website</a>
         </div>
+        <div className="mt-2">
+          <a href="/privacy" className="text-[10px] text-muted-foreground hover:text-primary">Privacy Policy</a>
+        </div>
       </div>
     </footer>
   );
