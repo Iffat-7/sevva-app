@@ -10,6 +10,8 @@ import Menu from "./pages/Menu";
 import Booking from "./pages/Booking";
 import Cart from "./pages/Cart";
 import Auth from "./pages/Auth";
+import Gallery from "./pages/Gallery";
+import Admin from "./pages/Admin";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 
@@ -28,6 +30,8 @@ const App = () => (
             <Route path="/booking" element={<Booking />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -1,4 +1,4 @@
-import { Home, UtensilsCrossed, CalendarDays, ShoppingBag } from "lucide-react";
+import { Home, UtensilsCrossed, CalendarDays, ShoppingBag, Image } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "@/lib/cart-context";
 import { motion } from "framer-motion";
@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 const navItems = [
   { to: "/", icon: Home, label: "Home" },
   { to: "/menu", icon: UtensilsCrossed, label: "Menu" },
+  { to: "/gallery", icon: Image, label: "Gallery" },
   { to: "/booking", icon: CalendarDays, label: "Book" },
   { to: "/cart", icon: ShoppingBag, label: "Order" },
 ];
